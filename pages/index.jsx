@@ -1,6 +1,8 @@
+import { Navigation } from './../components/Navigation';
 import Head from 'next/head';
 import cookie from 'cookie';
 import api from '../lib/api';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 
 const Home = () => {
   return (
@@ -8,7 +10,9 @@ const Home = () => {
       <Head>
         <title>Little Twitter</title>
       </Head>
-      <div className="text-center">s;fgjslkgjsf</div>
+      <Container fluid>
+        <Navigation />
+      </Container>
     </>
   );
 };
