@@ -4,6 +4,7 @@ import { Form, FloatingLabel, Button } from 'react-bootstrap';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState({});
+  const [isLoading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +23,7 @@ const LoginForm = () => {
           name="email"
           placeholder="name@example.com"
           isInvalid={errors.email}
+          disabled={isLoading}
         />
         <Form.Control.Feedback type="invalid">
           {errors.email}
@@ -33,16 +35,29 @@ const LoginForm = () => {
           type="password"
           placeholder="**************"
           isInvalid={errors.password}
+          disabled={isLoading}
         />
         <Form.Control.Feedback type="invalid">
           {errors.password}
         </Form.Control.Feedback>
       </FloatingLabel>
-      <Button type="submit" variant="primary" size="lg" className="w-100 mb-2">
-        Вход
+      <Button
+        type="submit"
+        variant="primary"
+        size="lg"
+        className="w-100 mb-2"
+        disabled={isLoading}
+      >
+        {!isLoading ? 'Вход' : 'Влизане...'}
       </Button>
       <Link href="/register" passHref>
-        <Button as="a" variant="outline-secondary" size="lg" className="w-100">
+        <Button
+          as="a"
+          variant="outline-secondary"
+          size="lg"
+          className="w-100"
+          disabled={isLoading}
+        >
           Регистрация
         </Button>
       </Link>
