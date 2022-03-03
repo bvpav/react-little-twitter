@@ -1,19 +1,12 @@
 import LoginForm from '../components/LoginForm';
+import CenterPage from '../components/ui/CenterPage';
 
-const Login = () => {
+const LoginPage = () => {
   return (
-    <main
-      className="text-center"
-      style={{
-        width: '100%',
-        maxWidth: '330px',
-        padding: '15px',
-        margin: 'auto',
-      }}
-    >
+    <CenterPage>
       <LoginForm />
-    </main>
+    </CenterPage>
   );
 };
 
-export default Login;
+export default LoginPage;
