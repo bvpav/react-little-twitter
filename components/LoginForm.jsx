@@ -1,18 +1,27 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Form, FloatingLabel, Button } from 'react-bootstrap';
+import api from '../lib/api';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState({});
   const [isLoading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const form = new FormData(e.target);
     const data = Object.fromEntries(form);
 
-    alert(JSON.stringify(data, null, 2));
+    setLoading(true);
+    try {
+      const response = await api.post('/auth/sign-in', data);
+      setErrors({});
+      // TODO: handle response
+    } catch ({ response }) {
+      setErrors(response.data.errors);
+    }
+    setLoading(false);
   };
 
   return (
