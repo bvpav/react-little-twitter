@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Form, FloatingLabel, Button } from 'react-bootstrap';
+import { Form, FloatingLabel, Button, Alert } from 'react-bootstrap';
 import useAuthForm from '../hooks/useAuthForm';
 
 const RegisterForm = () => {
@@ -8,6 +8,7 @@ const RegisterForm = () => {
   return (
     <Form class="form" onSubmit={handleSubmit}>
       <h1 className="h3 mb-3 fw-normal">Регистрация</h1>
+      {!!errors.general && <Alert variant="danger">{errors.general}</Alert>}
       <FloatingLabel label="Имейл" className="w-100 mb-2">
         <Form.Control
           name="email"
