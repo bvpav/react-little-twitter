@@ -3,8 +3,9 @@ import Head from 'next/head';
 import cookie from 'cookie';
 import api from '../lib/api';
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import PostList from '../components/PostList';
 
-const Home = () => {
+const Home = ({ groupPosts }) => {
   return (
     <>
       <Head>
@@ -12,6 +13,7 @@ const Home = () => {
       </Head>
       <Container fluid>
         <Navigation />
+        <PostList posts={groupPosts} />
       </Container>
     </>
   );
