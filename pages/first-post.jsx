@@ -10,13 +10,15 @@ const FirstPostPage = () => {
   );
 };
 
-export const getServerSideProps = ({ req, res }) => {
+export const getServerSideProps = ({ req }) => {
   const cookies = cookie.parse(req.headers.cookie);
   if (!cookies.accessToken || cookies.groupId) {
-    res.writeHead(307, {
-      Location: !cookies.accessToken ? '/login' : '/',
-    });
-    res.end();
+    return {
+      redirect: {
+        destination: !cookies.accessToken ? '/login' : '/',
+        permanent: false,
+      },
+    };
   }
   return { props: {} };
 };

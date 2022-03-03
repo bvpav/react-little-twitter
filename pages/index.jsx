@@ -41,14 +41,15 @@ const Home = ({ groupPosts }) => {
   );
 };
 
-export const getServerSideProps = async ({ req, res }) => {
+export const getServerSideProps = async ({ req }) => {
   const cookies = cookie.parse(req.headers.cookie);
   if (!cookies.accessToken || !cookies.groupId) {
-    res.writeHead(307, {
-      Location: !cookies.accessToken ? '/login' : '/first-post',
-    });
-    res.end();
-    return { props: {} };
+    return {
+      redirect: {
+        destination: !cookies.accessToken ? '/login' : '/first-post',
+        permanent: false,
+      },
+    };
   }
 
   const response = await api.get(`/group/${cookies.groupId}/post`, {
