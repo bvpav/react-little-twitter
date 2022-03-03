@@ -48,6 +48,7 @@ const PostModal = ({ postId, body, show, onPublish }) => {
           {!!errors.general && <Alert variant="danger">{errors.general}</Alert>}
           <Form.Group>
             <Form.Control
+              required
               defaultValue={body}
               name="body"
               as="textarea"

@@ -47,6 +47,7 @@ const FirstPostForm = () => {
         <Form.Control
           name="body"
           as="textarea"
+          required
           rows={10}
           placeholder="Здрасти..."
           isInvalid={errors.body}
