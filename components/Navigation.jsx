@@ -10,10 +10,12 @@ import {
 
 export function Navigation({}) {
   return (
-    <Navbar bg="light" expand={false}>
+    <Navbar bg="light" sticky="top" expand={false}>
       <Container fluid>
         <Navbar.Toggle aria-controls="offcanvasNavbar" />
-        <Navbar.Brand href="#">React Little Twitter</Navbar.Brand>
+        <Link href="/" passHref>
+          <Navbar.Brand>React Little Twitter</Navbar.Brand>
+        </Link>
         <Navbar.Offcanvas
           id="offcanvasNavbar"
           aria-labelledby="offcanvasNavbarLabel"
