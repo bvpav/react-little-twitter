@@ -1,11 +1,25 @@
-import { Navigation } from './../components/Navigation';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import cookie from 'cookie';
+import { Button, Container, Modal, Nav, Navbar } from 'react-bootstrap';
 import api from '../lib/api';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import PostModal from './../components/PostModal';
 import PostList from '../components/PostList';
+import { Navigation } from './../components/Navigation';
 
 const Home = ({ groupPosts }) => {
+  const router = useRouter();
+  const [showPublish, setShowPublish] = useState(false);
+
+  const handleShowPublish = () => setShowPublish(true);
+  const handleCreatePost = (post) => {
+    // TODO: stug
+    // alert(JSON.stringify(post, null, 2));
+    router.replace(router.asPath);
+    setShowPublish(false);
+  };
+
   return (
     <>
       <Head>
@@ -13,9 +27,14 @@ const Home = ({ groupPosts }) => {
       </Head>
       <Container fluid className="text-center">
         <Navigation />
-        <Button size="lg mt-5 mb-3" variant="primary">
+        <Button
+          onClick={handleShowPublish}
+          size="lg mt-5 mb-3"
+          variant="primary"
+        >
           Публикувайте нещо
         </Button>
+        <PostModal show={showPublish} onPublish={handleCreatePost} />
         <PostList posts={groupPosts} />
       </Container>
     </>
