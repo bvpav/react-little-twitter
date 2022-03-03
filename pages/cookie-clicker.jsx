@@ -1,3 +1,4 @@
+import cookie from 'cookie';
 import Head from 'next/head';
 import { useState } from 'react';
 import { Button, Container } from 'react-bootstrap';
@@ -44,13 +45,28 @@ const CookieClickerPage = () => {
           Публикувайте Вашите кликове!
         </Button>
         <PostModal
-          body={`Кликнах Cookie Clicker бутона ${clicks} път(и)`}
+          body={`Кликнах Cookie Clicker бутона ${clicks} път${
+            clicks === 1 ? '' : 'и'
+          }`}
           show={showPublish}
           onPublish={handleHidePublish}
         />
       </Container>
     </>
   );
+};
+
+export const getServerSideProps = async ({ req }) => {
+  const cookies = cookie.parse(req.headers.cookie);
+  if (!cookies.accessToken || !cookies.groupId) {
+    return {
+      redirect: {
+        destination: !cookies.accessToken ? '/login' : '/first-post',
+        permanent: false,
+      },
+    };
+  }
+  return { props: { groupPosts: response.data.response.groupPosts } };
 };
 
 export default CookieClickerPage;
