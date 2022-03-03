@@ -1,6 +1,8 @@
 import Head from 'next/head';
+import cookie from 'cookie';
+import api from '../lib/api';
 
-export default function Home() {
+const FeedPage = () => {
   return (
     <>
       <Head>
@@ -9,4 +11,20 @@ export default function Home() {
       <div className="text-center">s;fgjslkgjsf</div>
     </>
   );
-}
+};
+
+export const getServerSideProps = async ({ req, res }) => {
+  const cookies = cookie.parse(req.headers.cookie);
+  if (!cookies.accessToken || !cookies.groupId) {
+    res.writeHead(307, {
+      Location: !cookies.accessToken ? '/login' : '/first-post',
+    });
+    res.end();
+    return { props: {} };
+  }
+
+  const response = await api.get(`/group/${cookies.groupId}/post`);
+  return { props: { groupPosts: response.data.response.groupPosts } };
+};
+
+export default FeedPage;
