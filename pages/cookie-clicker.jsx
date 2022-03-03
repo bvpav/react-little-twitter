@@ -66,7 +66,7 @@ export const getServerSideProps = async ({ req }) => {
       },
     };
   }
-  return { props: { groupPosts: response.data.response.groupPosts } };
+  return { props: {} };
 };
 
 export default CookieClickerPage;
