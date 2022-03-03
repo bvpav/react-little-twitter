@@ -1,4 +1,6 @@
+import Cookies from 'js-cookie';
 import Link from 'next/link';
+import Router from 'next/router';
 import React from 'react';
 import {
   Container,
@@ -9,6 +11,12 @@ import {
 } from 'react-bootstrap';
 
 export function Navigation({}) {
+  const logOut = () => {
+    Cookies.remove('accessToken');
+    Cookies.remove('groupId');
+    Router.push('/login');
+  };
+
   return (
     <Navbar bg="light" sticky="top" expand={false}>
       <Container fluid>
@@ -33,7 +41,11 @@ export function Navigation({}) {
                 <Nav.Link>Cookie Clicker</Nav.Link>
               </Link>
               <NavDropdown title="Профил" id="offcanvasNavbarDropdown">
-                <NavDropdown.Item as="button" className="text-danger">
+                <NavDropdown.Item
+                  as="button"
+                  onClick={logOut}
+                  className="text-danger"
+                >
                   Изход
                 </NavDropdown.Item>
               </NavDropdown>
