@@ -2,7 +2,7 @@ import Head from 'next/head';
 import cookie from 'cookie';
 import api from '../lib/api';
 
-const FeedPage = () => {
+const Home = () => {
   return (
     <>
       <Head>
@@ -23,8 +23,10 @@ export const getServerSideProps = async ({ req, res }) => {
     return { props: {} };
   }
 
-  const response = await api.get(`/group/${cookies.groupId}/post`);
+  const response = await api.get(`/group/${cookies.groupId}/post`, {
+    headers: { Authorization: `Bearer ${cookies.accessToken}` },
+  });
   return { props: { groupPosts: response.data.response.groupPosts } };
 };
 
-export default FeedPage;
+export default Home;
