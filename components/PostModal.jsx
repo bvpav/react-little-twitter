@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Alert, Button, Form, Modal } from 'react-bootstrap';
 import api from '../lib/api';
 
-const PostModal = ({ show, onPublish }) => {
+const PostModal = ({ postId, body, show, onPublish }) => {
   const [errors, setErrors] = useState({});
   const [isLoading, setLoading] = useState(false);
 
@@ -17,9 +17,16 @@ const PostModal = ({ show, onPublish }) => {
     try {
       const accessToken = Cookies.get('accessToken');
       const groupId = Cookies.get('groupId');
-      const response = await api.post(`/group/${groupId}/post`, data, {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      });
+      let response;
+      if (!postId) {
+        response = await api.post(`/group/${groupId}/post`, data, {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+      } else {
+        response = await api.put(`/group/${groupId}/post/${postId}`, data, {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+      }
       setErrors({});
       onPublish(response.data.response.post);
     } catch (e) {
@@ -41,6 +48,7 @@ const PostModal = ({ show, onPublish }) => {
           {!!errors.general && <Alert variant="danger">{errors.general}</Alert>}
           <Form.Group>
             <Form.Control
+              defaultValue={body}
               name="body"
               as="textarea"
               rows={10}
