@@ -3,7 +3,7 @@ import { BsFillPencilFill, BsFillTrashFill } from 'react-icons/bs';
 
 const PostList = ({ posts }) => {
   return (
-    <Container className="my-3" style={{ maxWidth: '560px' }}>
+    <Container className="text-start my-3" style={{ maxWidth: '560px' }}>
       <Stack gap={3}>
         {posts.map((post) => (
           <Card key={post._id}>

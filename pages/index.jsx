@@ -2,7 +2,7 @@ import { Navigation } from './../components/Navigation';
 import Head from 'next/head';
 import cookie from 'cookie';
 import api from '../lib/api';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import PostList from '../components/PostList';
 
 const Home = ({ groupPosts }) => {
@@ -11,8 +11,11 @@ const Home = ({ groupPosts }) => {
       <Head>
         <title>Little Twitter</title>
       </Head>
-      <Container fluid>
+      <Container fluid className="text-center">
         <Navigation />
+        <Button size="lg mt-5 mb-3" variant="primary">
+          Публикувайте нещо
+        </Button>
         <PostList posts={groupPosts} />
       </Container>
     </>
