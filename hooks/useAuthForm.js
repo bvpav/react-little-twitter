@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import Cookies from 'js-cookie';
 import api from '../lib/api';
+import { useRouter } from 'next/router';
 
 const useAuthForm = (endpoint) => {
+  const router = useRouter();
   const [errors, setErrors] = useState({});
   const [isLoading, setLoading] = useState(false);
 
@@ -15,7 +18,10 @@ const useAuthForm = (endpoint) => {
     try {
       const response = await api.post(`/auth/${endpoint}`, data);
       setErrors({});
-      // TODO: handle response
+      const { accessToken, userId } = response.data.response;
+      Cookies.set('accessToken', accessToken, { sameSite: 'strict' });
+      Cookies.set('userId', userId, { sameSite: 'strict' });
+      router.push('/'); // TODO: go to diff page here haha
     } catch ({ response }) {
       setErrors(response.data.errors);
     }
