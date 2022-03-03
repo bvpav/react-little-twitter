@@ -3,6 +3,9 @@ import { useRouter } from 'next/router';
 import { Button, Card, Container, Stack } from 'react-bootstrap';
 import { BsFillPencilFill, BsFillTrashFill } from 'react-icons/bs';
 import PostModal from './PostModal';
+import ConfirmationModal from './ConfirmationModal';
+import api from '../lib/api';
+import Cookies from 'js-cookie';
 
 const PostCard = ({ post }) => {
   const router = useRouter();
@@ -12,6 +15,16 @@ const PostCard = ({ post }) => {
   const handleEdit = () => {
     router.replace(router.asPath, null, { scroll: false });
     setShowEdit(false);
+  };
+  const handleDelete = async () => {
+    try {
+      const groupId = Cookies.get('groupId');
+      const accessToken = Cookies.get('accessToken');
+      await api.delete(`/group/${groupId}/post/${post._id}`, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
+    } catch {}
+    router.replace(router.asPath, null, { scroll: false });
   };
 
   return (
@@ -42,9 +55,14 @@ const PostCard = ({ post }) => {
                 show={showEdit}
                 onPublish={handleEdit}
               />
-              <Button variant="danger">
-                <BsFillTrashFill />
-              </Button>
+              <ConfirmationModal
+                component={(props) => (
+                  <Button {...props} variant="danger">
+                    <BsFillTrashFill />
+                  </Button>
+                )}
+                onConfirm={handleDelete}
+              />
             </Stack>
           </div>
         </Stack>
