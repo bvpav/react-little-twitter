@@ -6,7 +6,7 @@ const PostList = ({ posts }) => {
     <Container className="text-start my-3" style={{ maxWidth: '560px' }}>
       <Stack gap={3}>
         {posts.map((post) => (
-          <PostCard post={post} />
+          <PostCard key={post._id} post={post} />
         ))}
       </Stack>
     </Container>

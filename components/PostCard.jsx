@@ -28,7 +28,7 @@ const PostCard = ({ post }) => {
   };
 
   return (
-    <Card key={post._id}>
+    <Card>
       <Card.Body>
         <Stack direction="horizontal">
           <div>
