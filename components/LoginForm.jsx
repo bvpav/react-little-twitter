@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Link from 'next/link';
 import { Form, FloatingLabel, Button } from 'react-bootstrap';
 
 const LoginForm = () => {
@@ -40,9 +41,11 @@ const LoginForm = () => {
       <Button type="submit" variant="primary" size="lg" className="w-100 mb-2">
         Вход
       </Button>
-      <Button variant="outline-secondary" size="lg" className="w-100">
-        Регистрация
-      </Button>
+      <Link href="/register" passHref>
+        <Button as="a" variant="outline-secondary" size="lg" className="w-100">
+          Регистрация
+        </Button>
+      </Link>
     </Form>
   );
 };
