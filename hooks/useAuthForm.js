@@ -18,10 +18,9 @@ const useAuthForm = (endpoint) => {
     try {
       const response = await api.post(`/auth/${endpoint}`, data);
       setErrors({});
-      const { accessToken, userId } = response.data.response;
+      const { accessToken } = response.data.response;
       Cookies.set('accessToken', accessToken, { sameSite: 'strict' });
-      Cookies.set('userId', userId, { sameSite: 'strict' });
-      router.push('/'); // TODO: go to diff page here haha
+      router.push('/first-post');
     } catch ({ response }) {
       setErrors(response.data.errors);
     }
