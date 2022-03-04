@@ -1,4 +1,5 @@
 import cookie from 'cookie';
+import Head from 'next/head';
 import LoginForm from '../components/LoginForm';
 import CenterPage from '../components/ui/CenterPage';
 import parseCookies from '../lib/utils/parseCookies';

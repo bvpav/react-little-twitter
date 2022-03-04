@@ -2,6 +2,7 @@ import cookie from 'cookie';
 import CenterPage from '../components/ui/CenterPage';
 import FirstPostForm from '../components/FirstPostForm';
 import parseCookies from '../lib/utils/parseCookies';
+import Head from 'next/head';
 
 const FirstPostPage = () => {
   return (

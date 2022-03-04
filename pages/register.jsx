@@ -1,4 +1,4 @@
-import cookie from 'cookie';
+import Head from 'next/head';
 import RegisterForm from '../components/RegisterForm';
 import CenterPage from '../components/ui/CenterPage';
 import parseCookies from '../lib/utils/parseCookies';
