@@ -2,7 +2,7 @@ import cookie from 'cookie';
 import Head from 'next/head';
 import { useState } from 'react';
 import { Button, Container } from 'react-bootstrap';
-import { Navigation } from '../components/Navigation';
+import Navigation from '../components/Navigation';
 import PostModal from '../components/PostModal';
 import BigClickableButton from '../components/ui/BigClickableButton';
 import parseCookies from '../lib/utils/parseCookies';

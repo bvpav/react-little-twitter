@@ -6,7 +6,7 @@ import { Button, Container, Modal, Nav, Navbar } from 'react-bootstrap';
 import api from '../lib/api';
 import PostModal from './../components/PostModal';
 import PostList from '../components/PostList';
-import { Navigation } from './../components/Navigation';
+import Navigation from './../components/Navigation';
 import parseCookies from '../lib/utils/parseCookies';
 
 const Home = ({ groupPosts }) => {

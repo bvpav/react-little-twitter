@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
-export function Navigation() {
+const Navigation = () => {
   const router = useRouter();
 
   const logOut = () => {
@@ -60,4 +60,6 @@ export function Navigation() {
       </Container>
     </Navbar>
   );
-}
+};
+
+export default Navigation;
