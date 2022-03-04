@@ -1,20 +1,16 @@
 import Cookies from 'js-cookie';
 import Link from 'next/link';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import React from 'react';
-import {
-  Container,
-  Nav,
-  Navbar,
-  NavDropdown,
-  Offcanvas,
-} from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
-export function Navigation({}) {
+export function Navigation() {
+  const router = useRouter();
+
   const logOut = () => {
     Cookies.remove('accessToken');
     Cookies.remove('groupId');
-    Router.push('/login');
+    router.push('/login');
   };
 
   return (
@@ -27,7 +23,7 @@ export function Navigation({}) {
 
         <Navbar.Collapse>
           <Nav
-            activeKey={Router.asPath}
+            activeKey={router.asPath}
             variant="pills"
             className="justify-content-end flex-grow-1 pe-3"
           >
