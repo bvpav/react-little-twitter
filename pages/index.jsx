@@ -7,6 +7,7 @@ import api from '../lib/api';
 import PostModal from './../components/PostModal';
 import PostList from '../components/PostList';
 import { Navigation } from './../components/Navigation';
+import parseCookies from '../lib/utils/parseCookies';
 
 const Home = ({ groupPosts }) => {
   const router = useRouter();
@@ -42,7 +43,7 @@ const Home = ({ groupPosts }) => {
 };
 
 export const getServerSideProps = async ({ req }) => {
-  const cookies = cookie.parse(req.headers.cookie);
+  const cookies = parseCookies(req);
   if (!cookies.accessToken || !cookies.groupId) {
     return {
       redirect: {

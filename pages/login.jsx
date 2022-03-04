@@ -1,6 +1,7 @@
 import cookie from 'cookie';
 import LoginForm from '../components/LoginForm';
 import CenterPage from '../components/ui/CenterPage';
+import parseCookies from '../lib/utils/parseCookies';
 
 const LoginPage = () => {
   return (
@@ -11,7 +12,7 @@ const LoginPage = () => {
 };
 
 export const getServerSideProps = async ({ req }) => {
-  const cookies = cookie.parse(req.headers.cookie);
+  const cookies = parseCookies(req);
   if (cookies.accessToken) {
     return {
       redirect: {

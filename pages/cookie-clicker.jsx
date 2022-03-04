@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { Navigation } from '../components/Navigation';
 import PostModal from '../components/PostModal';
+import parseCookies from '../lib/utils/parseCookies';
 
 const CookieClickerPage = () => {
   const [clicks, setClicks] = useState(0);
@@ -57,7 +58,7 @@ const CookieClickerPage = () => {
 };
 
 export const getServerSideProps = async ({ req }) => {
-  const cookies = cookie.parse(req.headers.cookie);
+  const cookies = parseCookies(req);
   if (!cookies.accessToken || !cookies.groupId) {
     return {
       redirect: {

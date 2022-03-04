@@ -1,6 +1,7 @@
 import cookie from 'cookie';
 import CenterPage from '../components/ui/CenterPage';
 import FirstPostForm from '../components/FirstPostForm';
+import parseCookies from '../lib/utils/parseCookies';
 
 const FirstPostPage = () => {
   return (
@@ -11,7 +12,7 @@ const FirstPostPage = () => {
 };
 
 export const getServerSideProps = ({ req }) => {
-  const cookies = cookie.parse(req.headers.cookie);
+  const cookies = parseCookies(req);
   if (!cookies.accessToken || cookies.groupId) {
     return {
       redirect: {
