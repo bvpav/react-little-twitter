@@ -18,40 +18,49 @@ export function Navigation({}) {
   };
 
   return (
-    <Navbar bg="light" sticky="top" expand={false}>
+    <Navbar bg="light" sticky="top" expand="lg">
       <Container fluid>
-        <Navbar.Toggle aria-controls="offcanvasNavbar" />
         <Link href="/" passHref>
           <Navbar.Brand>React Little Twitter</Navbar.Brand>
         </Link>
-        <Navbar.Offcanvas
-          id="offcanvasNavbar"
-          aria-labelledby="offcanvasNavbarLabel"
-          placement="start"
-        >
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title id="offcanvasNavbarLabel">Меню</Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            <Nav className="justify-content-end flex-grow-1 pe-3">
+        <Navbar.Toggle aria-controls="offcanvasNavbar" />
+
+        <Navbar.Collapse>
+          <Nav
+            activeKey={Router.asPath}
+            variant="pills"
+            className="justify-content-end flex-grow-1 pe-3"
+          >
+            <Nav.Item>
               <Link href="/" passHref>
                 <Nav.Link>Публикации</Nav.Link>
               </Link>
+            </Nav.Item>
+            <Nav.Item>
               <Link href="/cookie-clicker" passHref>
                 <Nav.Link>Cookie Clicker</Nav.Link>
               </Link>
-              <NavDropdown title="Профил" id="offcanvasNavbarDropdown">
-                <NavDropdown.Item
-                  as="button"
-                  onClick={logOut}
-                  className="text-danger"
-                >
-                  Изход
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          </Offcanvas.Body>
-        </Navbar.Offcanvas>
+            </Nav.Item>
+            <NavDropdown title="Профил" id="offcanvasNavbarDropdown">
+              <NavDropdown.Item
+                as="button"
+                onClick={logOut}
+                className="text-danger"
+              >
+                Изход
+              </NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Item>
+              <Nav.Link
+                href="https://github.com/bvpav/react-little-twitter-frontend"
+                target="_blank"
+                rel="noreferrer noopener nofollow"
+              >
+                GitHub
+              </Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );
