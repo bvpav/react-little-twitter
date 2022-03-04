@@ -14,7 +14,7 @@ export function Navigation() {
   };
 
   return (
-    <Navbar bg="light" sticky="top" expand="lg">
+    <Navbar variant="pills" bg="light" sticky="top" expand="lg">
       <Container fluid>
         <Link href="/" passHref>
           <Navbar.Brand>React Little Twitter</Navbar.Brand>
