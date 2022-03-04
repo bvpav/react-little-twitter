@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { Navigation } from '../components/Navigation';
 import PostModal from '../components/PostModal';
+import BigClickableButton from '../components/ui/BigClickableButton';
 import parseCookies from '../lib/utils/parseCookies';
 
 const CookieClickerPage = () => {
@@ -21,27 +22,11 @@ const CookieClickerPage = () => {
 
       <Container fluid className="text-center">
         <Navigation />
-        <style jsx>{`
-          div {
-            max-width: 350px;
-            font-size: 3em;
-            margin: 2em auto;
-            transition: all 0.05s cubic-bezier(0.7, 0, 0.84, 0);
-          }
-          div:active {
-            transform: scale(123%);
-          }
-        `}</style>
-        <div>
-          <Button
-            size="lg"
-            className="w-100 h-100"
-            style={{ height: '100%', fontSize: 'inherit' }}
-            onClick={() => setClicks((c) => c + 1)}
-          >
-            Кликове: {clicks}
-          </Button>
-        </div>
+
+        <BigClickableButton onClick={() => setClicks((c) => c + 1)}>
+          Кликове: {clicks}
+        </BigClickableButton>
+
         <Button variant="outline-secondary" onClick={handleShowPublish}>
           Публикувайте Вашите кликове!
         </Button>
