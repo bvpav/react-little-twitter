@@ -24,9 +24,14 @@ const Home = ({ groupPosts }) => {
   return (
     <>
       <Head>
-        <title>Little Twitter</title>
+        <title>Стена | React Little Twitter</title>
+        <meta
+          name="description"
+          content="Публикувайте, редактирайте и трийте текстови съобщение на Вашата лична стена в единствената социална мрежа, която съществува."
+        />
       </Head>
-      <Container fluid className="text-center">
+
+      <Container as="main" fluid className="text-center">
         <Navigation />
         <Button
           onClick={handleShowPublish}

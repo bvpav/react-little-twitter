@@ -17,10 +17,14 @@ const CookieClickerPage = () => {
   return (
     <>
       <Head>
-        <title>Little Twitter</title>
+        <title>Cookie Clicker | React Little Twitter</title>
+        <meta
+          name="description"
+          content="Кликнете бутона и гледайте как цифрата върху него расте. Публикувайте на личната си стена колко пъти сте кликнали бутона"
+        />
       </Head>
 
-      <Container fluid className="text-center">
+      <Container as="main" fluid className="text-center">
         <Navigation />
 
         <BigClickableButton onClick={() => setClicks((c) => c + 1)}>

@@ -5,9 +5,19 @@ import parseCookies from '../lib/utils/parseCookies';
 
 const FirstPostPage = () => {
   return (
-    <CenterPage>
-      <FirstPostForm />
-    </CenterPage>
+    <>
+      <Head>
+        <title>Начало | React Little Twitter</title>
+        <meta
+          name="description"
+          content="Публикувайте пътвото си съобщение на стената в единствената социална мрежа, която съществува."
+        />
+      </Head>
+
+      <CenterPage>
+        <FirstPostForm />
+      </CenterPage>
+    </>
   );
 };
 

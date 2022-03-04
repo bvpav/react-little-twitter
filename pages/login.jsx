@@ -5,9 +5,19 @@ import parseCookies from '../lib/utils/parseCookies';
 
 const LoginPage = () => {
   return (
-    <CenterPage>
-      <LoginForm />
-    </CenterPage>
+    <>
+      <Head>
+        <title>Вход | React Little Twitter</title>
+        <meta
+          name="description"
+          content="Влезте в профила си в React Little Twitter – Единствената социална мрежа, която съществува"
+        />
+      </Head>
+
+      <CenterPage>
+        <LoginForm />
+      </CenterPage>
+    </>
   );
 };
 

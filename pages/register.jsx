@@ -5,9 +5,19 @@ import parseCookies from '../lib/utils/parseCookies';
 
 const RegisterPage = () => {
   return (
-    <CenterPage>
-      <RegisterForm />
-    </CenterPage>
+    <>
+      <Head>
+        <title>Регистрация | React Little Twitter</title>
+        <meta
+          name="description"
+          content="Регистрирайте профил в React Little Twitter – Единствената социална мрежа, която съществува"
+        />
+      </Head>
+
+      <CenterPage>
+        <RegisterForm />
+      </CenterPage>
+    </>
   );
 };
 
